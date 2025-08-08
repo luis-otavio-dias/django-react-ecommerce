@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   Card,
@@ -10,11 +10,22 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
-import products from "../products";
+import axios from "axios";
 
 function ProductScreen() {
   const match = useParams();
-  const product = products.find((p) => p._id == match.id);
+
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    async function fetchProduct() {
+      const { data } = await axios.get(`/api/products/${match.id}`);
+      setProduct(data);
+    }
+
+    fetchProduct();
+  }, [match.id]);
+
   return (
     <div>
       <Link className="btn btn-light my-3" to="/">
