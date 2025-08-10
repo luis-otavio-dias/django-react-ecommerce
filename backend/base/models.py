@@ -14,7 +14,11 @@ class Product(models.Model):
         null=True,
         blank=True,
     )
-    # image =
+
+    image = models.ImageField(
+        null=True,
+        blank=True,
+    )
 
     brand = models.CharField(
         max_length=200,
