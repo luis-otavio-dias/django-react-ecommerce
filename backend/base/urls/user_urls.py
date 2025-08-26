@@ -5,6 +5,7 @@ from base.views.user_views import (
     registerUser,
     getUserProfile,
     getUsers,
+    updateUserProfile,
 )
 
 
@@ -16,5 +17,6 @@ urlpatterns = [
     ),
     path("register/", registerUser, name="register"),
     path("profile/", getUserProfile, name="users-profile"),
+    path("profile/update/", updateUserProfile, name="user-profile-update"),
     path("", getUsers, name="users"),
 ]
